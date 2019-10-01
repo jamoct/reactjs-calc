@@ -1,0 +1,56 @@
+* {
+	margin: 0;
+	padding:0;
+}
+
+html, body{
+	height: 100%;
+}
+
+.calc-body {
+	width: 35%;
+	margin: 50px auto;
+	height: 100%;
+	font-size: 30px;
+	padding: 15px;
+	background-color: #00bcd46e;
+	border: 1px solid black;
+}
+
+.result {
+	background-color: black;
+	border: 1px solid black;
+	height: 50px;
+	padding: 10px;
+	color: white;
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+.keypad {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	text-align: center;
+}
+
+.keypad button {
+	border: 1px black solid;
+	padding: 5px;
+	margin: 2px;
+	background-color: transparent;
+	font-size: 30px;
+}
+
+.keypad-equals {
+	border: 1px solid black;
+	height: 50px;
+	padding: 10px;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.keypad-equals button {
+	background-color: transparent;
+	font-size: 30px;
+	border: none;
+}
