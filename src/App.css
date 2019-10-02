@@ -25,6 +25,8 @@ html, body{
 	color: white;
 	text-align: right;
 	margin-bottom: 10px;
+	width: 95%;
+	font-size: 30px;
 }
 
 .keypad {

@@ -7,6 +7,10 @@ export default class App extends Component {
     result: ""
   }
 
+  handleInput = e => {
+    this.setState({result: e.target.value});
+  }
+
   handleClick = button => {
 
     if (button === "CLEAR") {
@@ -20,7 +24,13 @@ export default class App extends Component {
     }
 
     if (button === "EQUALS") {
-      this.calculate();
+      try {
+      let result = eval(this.state.result);
+      this.setState({result: result});
+      }
+      catch (e) {
+        this.setState({result: 'Error'});
+      }
     }
   
     else if (button !== "CLEAR" && button !== "DEL") {
@@ -29,7 +39,8 @@ export default class App extends Component {
 
   }
 
-  calculate = () => {
+  calculate = (event) => {
+    event.preventDefault();
     try {
       let result = eval(this.state.result);
       this.setState({result: result});
@@ -44,9 +55,15 @@ export default class App extends Component {
     return (
       <div>
         <div className="calc-body">
-          <div className="result">
-            {this.state.result}
-          </div>
+        <form onSubmit={this.calculate}>
+          <input
+            name="result"
+            value={this.state.result}
+            onChange={this.handleInput}
+            className="result"
+            autofocus="true"
+          />
+          </form>
           <div className="keypad">
             <button onClick={() => this.handleClick('CLEAR')}>C</button>
             <button onClick={() => this.handleClick('0')}>0</button>
@@ -71,7 +88,7 @@ export default class App extends Component {
             <button onClick={() => this.handleClick('3')}>3</button>
             <button onClick={() => this.handleClick('-')}>-</button>
           </div>
-          <div className="keypad-equals" onClick={() => this.handleClick('EQUALS')}>
+          <div className="keypad-equals" onClick={() => this.handleClick('EQUALS')} onKeyPress={this.handleKeyPress}>
             <button>=</button>
           </div>
         </div>
